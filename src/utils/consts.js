@@ -1,0 +1,9 @@
+export const DASHBOARD = "/";
+export const PRODUCTS = "/products";
+export const PRODUCTS_DETAIL = "/products/:id";
+export const PRODUCTS_CREATE = "/products/create/:id";
+export const PRODUCTS_UPDATE = "/products/update/:id";
+export const PRODUCTS_DELETE = "/products/delete/:id";
+export const ORDERS = "/orders";
+export const ORDER_DETAIL = "/orders/:id";
+export const ORDER_DELETE = "/orders/delete/:id";
