@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { a } from "../../services/axiosInstance";
+import { PRODUCTS } from "../../utils/consts";
+
 function DetailProduct() {
   const [products, setProducts] = useState({});
   useEffect(() => {

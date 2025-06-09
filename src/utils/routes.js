@@ -38,6 +38,10 @@ export const routes = [
     element: EditProduct,
   },
   {
+    path: PRODUCTS_DETAIL,
+    element: EditProduct,
+  },
+  {
     path: ORDERS,
     element: Orders,
   },

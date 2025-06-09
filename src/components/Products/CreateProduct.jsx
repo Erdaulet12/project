@@ -1,17 +1,16 @@
 import { PRODUCTS } from "../../utils/consts";
 
 function CreateProduct() {
-
-  const[name, setName] = useState('');
-  const[price, setPrice] = useState('');
-  const[description, setDescription] = useState('');
-  const[image, setImage] = useState('');
-  const[category, setCategory] = useState('');
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
+  const [category, setCategory] = useState("");
 
   const navigate = useNavigate();
 
   async function handleSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
 
     const newProduct = {
       name: name,
@@ -24,17 +23,16 @@ function CreateProduct() {
     try {
       const res = await a.post("/products", newProduct);
       alert("Товар добавлен");
-      setName('');
-      setPrice('');
-      setDescription('');
-      setImage('');
-      setCategory('');
+      setName("");
+      setPrice("");
+      setDescription("");
+      setImage("");
+      setCategory("");
       navigate(PRODUCTS);
-    }  catch (error) {
+    } catch (error) {
       console.error("Error:", error);
     }
   }
-    
 
   return (
     <section class="block">
@@ -47,7 +45,7 @@ function CreateProduct() {
           <div class="form-control">
             <label for="name">Название товара</label>
             <input
-              value="{name}"
+              value={name}
               onChange={(e) => setName(e.target.value)}
               id="name"
               type="text"
@@ -58,7 +56,7 @@ function CreateProduct() {
           <div class="form-control">
             <label for="price">Цена</label>
             <input
-              value="{price}"
+              value={price}
               onChange={(e) => setPrice(e.target.value)}
               id="price"
               type="number"
@@ -69,7 +67,7 @@ function CreateProduct() {
           <div class="form-control">
             <label for="description">Описание</label>
             <textarea
-              value="{description}"
+              value={description}
               onChange={(e) => setDescription(e.target.value)}
               id="description"
               placeholder="Введите описание"
@@ -79,7 +77,7 @@ function CreateProduct() {
           <div class="form-control">
             <label for="image">Фото</label>
             <input
-              value="{image}"
+              value={image}
               onChange={(e) => setImage(e.target.value)}
               id="image"
               type="url"
@@ -90,7 +88,7 @@ function CreateProduct() {
           <div class="form-control">
             <label for="category">Категория</label>
             <input
-              value="{category}"
+              value={category}
               onChange={(e) => setCategory(e.target.value)}
               id="category"
               type="text"
@@ -105,6 +103,6 @@ function CreateProduct() {
       </div>
     </section>
   );
-} 
+}
 
 export default CreateProduct;

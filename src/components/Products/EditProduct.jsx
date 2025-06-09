@@ -1,27 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { PRODUCTS } from "../../utils/consts";
-import { use } from "react";
-import {Link} from "react-router-dom";
-function EditProduct() {
+import { useEffect, useState } from "react";
+import { a } from "../../services/axiosInstance";
 
+function EditProduct() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [name, setName] = useState('');
-  const [price, setPrice] = useState('');
-  const [description, setDescription] = useState('');
-  const [image, setImage] = useState('');
-  const [category, setCategory] = useState('');
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
+  const [category, setCategory] = useState("");
 
   useEffect(() => {
     async function fetchProduct() {
       try {
         const res = await a.get(`products/${id}`);
         const product = res.data;
-        setName(product.name) || '';
-        setPrice(product.price) || 'undefined';
-        setDescription(product.description) || '';
-        setImage(product.image) || '';
-        setCategory(product.category) || '';
+        setName(product.name) || "";
+        setPrice(product.price) || "undefined";
+        setDescription(product.description) || "";
+        setImage(product.image) || "";
+        setCategory(product.category) || "";
       } catch (error) {
         console.error("Error:", error);
       }
@@ -41,14 +41,13 @@ function EditProduct() {
     };
 
     try {
-     const res = await a.patch(`/products/${id}`, updatedProduct);
-     alert("Товар изменен");
-     navigate(PRODUCTS);
+      const res = await a.patch(`/products/${id}`, updatedProduct);
+      alert("Товар изменен");
+      navigate(PRODUCTS);
     } catch (error) {
       console.error("Error:", error);
     }
   }
-
 
   return (
     <section class="block">
@@ -61,7 +60,7 @@ function EditProduct() {
           <div class="form-control">
             <label for="name">Название товара</label>
             <input
-              value="name"
+              value={name}
               onChange={(e) => setName(e.target.value)}
               id="name"
               type="text"
@@ -72,7 +71,7 @@ function EditProduct() {
           <div class="form-control">
             <label for="price">Цена</label>
             <input
-              value="price"
+              value={price}
               onChange={(e) => setPrice(e.target.value)}
               id="price"
               type="number"
@@ -83,7 +82,7 @@ function EditProduct() {
           <div class="form-control">
             <label for="description">Описание</label>
             <textarea
-              value="description"
+              value={description}
               onChange={(e) => setDescription(e.target.value)}
               id="description"
               placeholder="Введите описание"
@@ -93,7 +92,7 @@ function EditProduct() {
           <div class="form-control">
             <label for="image">Фото</label>
             <input
-              value="image"
+              value={image}
               onChange={(e) => setImage(e.target.value)}
               id="image"
               type="url"
@@ -104,7 +103,7 @@ function EditProduct() {
           <div class="form-control">
             <label for="category">Категория</label>
             <input
-              value="category"
+              value={category}
               onChange={(e) => setCategory(e.target.value)}
               id="category"
               type="text"
