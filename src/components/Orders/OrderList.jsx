@@ -1,4 +1,4 @@
-import { use } from "react";
+import { useState, useEffect } from "react";
 import OrderItem from "./OrderItem";
 
 function OrderList() {
